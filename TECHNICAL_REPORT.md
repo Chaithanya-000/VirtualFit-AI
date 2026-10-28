@@ -30,10 +30,30 @@ The application sends the prepared inputs to the hosted
 IDM-VTON inference service through Gradio Client.
 The returned generated image is displayed to the user.
 
-## 6. Testing
-The application launch and model connection were tested.
-Record the actual test inputs, results and errors here.
-Include screenshots of successful runs.
+
+## 6. Testing and Evidence
+
+The application was tested locally and deployed using
+Streamlit Community Cloud.
+
+- Application launch: Successful
+- Hosted IDM-VTON connection: Tested successfully
+- Virtual try-on generation: Successful in the tested run
+- Live deployment: Working
+
+### Screenshots
+
+1. `screenshots/01-app-interface.png` — Main application interface.
+2. `screenshots/02-uploaded-images.png` — Uploaded person and garment images.
+3. `screenshots/03-generated-result.png` — Generated virtual try-on result.
+
+### Live Demo
+
+https://virtualfit-ai-dgygyygpff6yveh8nyargt.streamlit.app/
+
+Formal automated tests and performance benchmarks have
+not yet been implemented.
+
 
 ## 7. Challenges
 - Connecting the application to a hosted AI service.
@@ -53,21 +73,42 @@ Include screenshots of successful runs.
 - Automated tests and performance measurements.
 - Improved privacy controls.
 
-## 10. Model and Library References
-IDM-VTON:
-https://github.com/yisol/IDM-VTON
+## 10. AI Model, API, Datasets and Libraries
 
-Streamlit:
-https://streamlit.io/
+### AI Model
+- IDM-VTON pretrained virtual try-on model.
+- Official repository: https://github.com/yisol/IDM-VTON
+- The model is accessed through a hosted inference service.
+- The application does not train or fine-tune the model.
 
-Pillow:
-https://python-pillow.org/
+### API / Inference Service
+- Gradio Client connects to the public `yisol/IDM-VTON`
+  Gradio Space.
+- Inference endpoint used: `/tryon`.
+- Inputs include a person image, garment image and
+  garment description.
+- Output: generated virtual try-on image.
 
-Gradio:
-https://www.gradio.app/
+### Datasets
+- No training dataset is downloaded, packaged or used
+  directly by this application.
+- Person and garment images are supplied by the user
+  for inference.
 
-Review the relevant licenses before redistribution
-or commercial use.
+### Third-Party Libraries and Services
+- Streamlit — web application interface.
+- Pillow — image loading, conversion and saving.
+- Gradio Client — communication with the hosted model.
+- Streamlit Community Cloud — application deployment.
+- Python standard library — temporary files and image buffers.
+
+### Licensing and Attribution
+The IDM-VTON repository states that its code and checkpoints
+are licensed under CC BY-NC-SA 4.0. Review the applicable
+license conditions before redistribution or commercial use.
+
+This project integrates a pretrained third-party model and
+does not claim ownership of that model.
 
 ## 11. Conclusion
 VirtualFit AI demonstrates a prototype that connects
